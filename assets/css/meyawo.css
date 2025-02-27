@@ -274,6 +274,7 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  appearance: button;
 }
 
 button:not(:disabled),
@@ -302,6 +303,7 @@ input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
   -webkit-appearance: listbox;
+  appearance: listbox;
 }
 
 textarea {
@@ -340,6 +342,7 @@ progress {
 [type="search"] {
   outline-offset: -2px;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 [type="search"]::-webkit-search-decoration {
@@ -604,6 +607,7 @@ pre code {
           flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  margin-bottom: 15px;
 }
 
 .no-gutters {
@@ -11133,14 +11137,30 @@ p {
 
 .service-card {
   position: relative;
+  background-size: cover;
+    background-position: center;
   min-height: 230px;
   border: 1px solid #dee2e6;
   overflow: hidden;
   border-radius: 3px;
+  color: #000; 
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Replace with your desired image URL */
+    z-index: 1;
 }
 
 .service-card .body {
-  padding: 10px;
+  text-align: center;  /* Centers the text inside each card */
+    padding: 15px; /* Adjusts the padding to make the cards look uniform */
+    z-index: 2;
 }
 
 .service-card .body img.icon {
@@ -11158,14 +11178,7 @@ p {
   }
 }
 
-.service-card .body .subtitle {
-  position: absolute;
-  bottom: -100%;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: all, 0.3s;
-  transition: all, 0.3s;
-}
+
 
 @media (prefers-reduced-motion: reduce) {
   .service-card .body .subtitle {
@@ -12188,6 +12201,12 @@ pre .code {
           flex-grow: 1;
 }
 
+@media (max-width: 576px) {
+  .service-card  {
+      min-height: auto;
+  }
+}
+
 @media (max-width: 767.98px) {
   .about {
     -webkit-box-orient: vertical;
@@ -12232,3 +12251,15 @@ pre .code {
 .section-lg {
   padding: 100px 0 !important;
 }
+
+.fixed-size {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-card .subtitle {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
